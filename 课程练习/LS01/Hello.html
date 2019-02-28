@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ctrl+鼠标滚动-->放大
+        // shift+enter-->换行
+        // ctrl+l-->清空当前行的内容
+        // ctrl+r-->刷新页面
+        var username="zhangsan";
+        var age = 10;
+        function setName(){
+            username = "lisi";
+        }
+        function setAge(){
+            age=20;
+        }
+        function setInfor(){
+            setName();
+            setAge();
+        }
+        setInfor();
+
+
+        var num1=10;
+        var b1=!!num1;
+        var b2=num1+"2";
+        var b3=num1+true;
+        console.log(b1);
+        console.log(b2);
+        console.log(b3);
+        var str1="111";
+        //parseInt() parseFloat();
+        var num2=parseInt(str1)+10;
+        console.log(num2);
+        //typeof 获取变量的类型
+        console.log(typeof(num2));
+    </script>
+</body>
+</html>
