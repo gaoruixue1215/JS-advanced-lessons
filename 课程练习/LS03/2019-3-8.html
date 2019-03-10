@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //ES5 ECMAScrpit是一个语言环境，JavaScript
+    //是完全基于ECMAScrpit实现的脚本语言
+    //ES5是ECMAScrpit的简写
+    //ES5标准下，没有块作用域
+    // var username;
+    // if(true){
+    //     var username = "zhangsan";
+    // }
+    // console.log(username);
+    
+    // for(var i = 0; i < 3; i++){   
+    // }
+    // console.log(i);
+
+
+
+    
+    // "use strict"
+    // function fn1(){
+    //     "use strict"
+    // }
+
+
+    //非严格模式下，不使用var来显示声明变量，则该变量自动转化为全局变量
+    // function fn2(){
+        
+    //     username = "zhangsan";
+    // }
+    // fn2();
+    // console.log(username);
+
+
+
+
+
+//普通函数；里面，this指向全局变量
+//window
+    function fn3(){
+        console.log(this);
+    }
+    fn3();
+
+
+    //严格模式下，在普通函数内，this指向undefined
+    function fn4(){
+        "use strict"
+        console.log(this);
+    }
+    fn4();
+
+
+    function judge(){
+        var result = (this ===undefined?true:false);
+        return result;
+    }
+    if(judge()){
+        console.log("严格模式");
+    }
+    else{
+        console.log("非严格模式");
+        
+    }
+
+    "use strict"
+    var str ="abcdef";
+    str.length = 1;
+    console.log(str.length);
+    </script>
+</body>
+</html>
