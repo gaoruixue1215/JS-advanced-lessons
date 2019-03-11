@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a=45;
+        if(a=45){
+            console.log("判断相等");
+        }
+        // if(45=a){
+        //     console.log("判断相等");
+        // }//报错
+        //发反写，字面量在前，变量在后
+        if(45==a){
+            console.log("判断相等");
+        }
+
+
+        var x="1";
+        //++x 表示先运算，再输出
+        //x++ 表示先输出，再运算
+        //++ -- 自动完成数据类型的自动转换，转化为数字类型
+        console.log(++x);//2
+        console.log(x++);//1
+        //+=不会进行类型的转换
+        console.log(x+=1);//11
+
+
+        //左真取右
+        console.log(10 && 0);
+        //左假取左
+        console.log(undefined && 10);
+
+
+        //  ||左真取左
+       
+        //左假取右
+
+    </script>
+    <script>
+        var score = 76;
+        console.log((score>90&&"优")||(score>75&&"良")||(score>60&&"及格")||"不及格");
+    </script>
+    <script>
+        function sum(x,y,z){
+            x=x;
+            y=y;
+            z=z;
+            return x+y+z;
+        }
+        console.log(sum());//NaN
+    </script>
+    <script>
+         function sum(x,y,z){
+            x=x||1;
+            y=y||2;
+            z=z||3;
+            return x+y+z;
+        }
+        console.log(sum());//6
+        console.log(sum(false,false,false));
+
+        //ES6 中实现设置函数参数的默认值
+        function sum1(x=1,y=2,z=3){
+            return x+y+z;
+        }
+        console.log(sum1());
+    </script>
+</body>
+</html>

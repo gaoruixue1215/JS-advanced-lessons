@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj ={"username":"zhangsan","age":20};
+        obj.__proto__.sex = "male";//数据原型
+        //for in 遍历的是对象的所有可枚举属性
+        for(var i in obj){
+            console.log("键名："+i);
+            //obj[变量]  obj.字面量
+            console.log("键值："+obj[i]);
+        }
+        //不建议用for in 来遍历数组
+        var arr1 = [1,2,3];
+        console.log(Object(arr1));
+        for(var i in arr1){
+            console.log(i);
+        }
+    </script>
+</body>
+</html>
