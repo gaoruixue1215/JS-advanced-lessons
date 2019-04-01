@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		max(2,3);
+		function max(a,b){
+			return a>b? a:b;
+		}
+
+		//min(2,3);//报错
+		var min = function(x,y){
+			return x>y?y:x;
+		};
+		//不能在min声明前进行调用
+		min(2,3);//3
+
+		//Function(arg1.arg2,arg3,.....,函数体)；
+		//执行效率上相对较低，但是更加灵活
+		var fn1 = new function("a","b","return a>b? a:b");
+		fn1(2,3);
+
+		'use strict'
+	    function test(){
+	        console.log(this);
+	    }
+	    test();
+
+	    //对象的内部的方法调用，this 指向调用该方法的对象
+		var obj = {
+			x:0,
+			test:function(){
+				console.log(this.x);
+			}
+		};
+		obj.test();//0
+
+		objA = {name:"AA"};
+		objB = {name:"BB"};
+		objA.foo = function(){
+			console.log(this,name);
+		};
+		objA.foo();//AA
+		//方法.call(当前对象)将方法的调用执行从原有对象转换为当前对象
+		objA.foo.call(objB);//BB
+
+
+
+		function Person(username){
+			this.username = username;
+		}
+		Person.prototype.sayHi = function(){
+			console.log("Hi,i'm" + this.name);
+		}
+		var p1 = new Person("Iack");
+		p1.sayHi();//Hi,i'm Jack
+
+
+
+		//实参数量大于形参,可以使用arguments获取实参，arguments类数组结构
+		function test(){
+			var s = "";
+			for(var i = 0; i<arguments.length;i++){
+				s+= arguments[i];
+			}
+			return s;
+			console.log(arguments);
+
+		}
+		test("hello","world");
+
+	</script>
+	<script>
+		var a = 1;
+		function test(){
+			x = 2;
+			console.log(a,x);
+		}
+		test(a);
+		console.log(a);
+
+
+
+
+
+
+
+		//定义一个函数，传入一个参数，完成对参数的复制处理，生成一个新的变量并返回
+		//参数类型 string boolean number 数组
+	</script>
+</body>
+</html>

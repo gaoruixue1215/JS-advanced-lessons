@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if(true){
+            var a = 1;
+        }
+        console.log(a);
+
+        if(false){
+            var b = 2;
+        }
+        console.log(b);
+    </script>
+    <script>
+        console.log(a);
+        var a = 1;
+        function fn1(){
+            //函数内部的预解析，在函数作用域范围内，对变量进行提升
+            console.log(b);
+            var b = 2;
+        }
+        console.log(b);
+    </script>
+    <script>
+        function fn1(){
+            fn2();
+            function fn2(){
+                console.log("hello world");
+            }
+        }
+        fn1();
+        fn2();
+    </script>
+    <script>
+        function AA(){
+            console.log("AA_1");
+        }
+        var AA;
+
+        AA();
+        AA = function AA(){
+            console.log("AA_2");
+        };
+        AA();
+    </script>
+    <script>
+        var a = 1;
+        var b = 2;
+        function fn1(){//在当前作用域能够找到，则只作用当前，如果找不到。去找他的上一级（b=3,赋值，找他的上一级）
+            var b = 3;//作用范围只有fn1();函数，有var声明，如果没有
+            var d = 4;
+            console.log(b);
+            function fn2(){
+                b = 5;
+                var e = 6;
+            }
+            fn2();
+        }
+        fn1();
+        console.log(b);
+    </script>
+    <script>
+        var name = "Jack";
+        function foo() {
+            console.log(name);
+        }
+        function bar() {
+            var name = "Bill";
+            foo();
+        }
+        bar();//Jack
+    </script>
+    <script>
+        //变量污染、变量共享问题,尤其是异步执行的情况下。如果是两个单独的文件的情况下，更容易造成变量污染
+        var userId = 123;
+        document.onclick = function () {
+            console.log("userId = ",userId);
+            //alert("userId = "+userId);
+        };
+        //一长串代码后，假如看不见上述代码了
+        var a=2,b=3;
+        if(a<b){
+            var userId = 234;
+        }
+
+
+        for(var i = 0;i<3;i++){
+            setTimeout(function() {
+                console.log(new Date(),i)
+            }, i*1000);
+        }
+
+        if(true){
+            let a = 1;//let 与 var对应
+        }
+        console.log(a);
+    </script>
+    <script>
+        //代码执行的上下文
+        //指的是代码执行的时候，相关的上下文环境 。
+        //函数的调用栈，this的指向，作用域及作用域中的变量
+
+        var a = 1;
+        var b = 2;
+        function fn1(){
+            var c = 3;
+            var d = 4;
+            function fn2(){
+                var e = 5;
+                var f = 6;
+                function fn3(){
+
+                }
+            }
+            fn2();
+        }
+        fn1();
+    </script>
+</body>
+</html>

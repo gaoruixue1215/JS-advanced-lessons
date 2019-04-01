@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    1、函数的作用域，在定义的时候就是确定的
+    2、函数内部的变量，有些时候需要等到函数执行后来确定
+    */
+    function fn1(){
+        var arr1 = [];
+        for(var i = 0;i<10;i++){
+            (function(j){
+                arr1[j] = function(){
+                return j;
+            }
+            })(i)//立即执行函数
+            // arr1[i] = function(){
+            //     return i;//执行后的值，此时循环结束后，i=10
+            // }
+        }
+
+        // var i;
+
+        // arr[0] = function(){
+        //     return i;
+        // }
+        // arr[1] = function(){
+        //     return i;
+        // }
+        // ...
+        // arr[10] = function(){
+        //     return i;
+        // }
+
+        return arr1;
+    }
+    var result = fn1();
+    result[0]();
+</script>
+<script>
+
+</script>
+</html>

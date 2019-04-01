@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //对象 instanceof 构造函数
+        //1、判断对象是否可以使用构造函数实例化得到
+        //2、判断在对象的原型链上能否找到函数的prototype属性
+        //instanceof运算符用于测试构造函数的prototype属性是否出现在对象的原型链中的任何位置
+        function Person(username,age){
+            this.username=username;
+            this.age=age;
+        }
+        var person = new Person("zhangsan",20);
+        console.log(person);
+        console.log(person.__proto__.__proto__ == Person.proto);//false
+        person instanceof Person;
+    </script>
+    <script>
+        function fn1(){
+            //length表示的是函数的形参的个数
+            //arguments是函数调用时，实参类数组集合
+            console.log(fn1.length);
+            for(var i = 0;i<arguments.length;i++){
+                console.log(arguments[i]);
+            }
+        }
+        fn1(1,2,3);
+    </script>
+    <script>
+        function fn1(){
+            console.log(fn1.caller);
+        }
+        function fn2(){
+            fn1();
+        }
+        fn2();
+
+        var func =function(){
+            if(n<=0)
+                return 1;
+            else
+                return n*arguments.callee(n-1);
+            
+        }
+    </script>
+    <script>
+        var objA = {"objName":"AAA"};
+        var objB = {"objName":"BBB"};
+        objA.foo = function(){
+            console.log(this.objName);
+        }
+        objA.foo();
+        //方法.call();//改前面方法this的指向
+        objA.foo.call(objA);
+
+
+        function Person(username,age){
+            this.username=username;
+            this.age=age;
+        }
+
+        function Student(username,age,sex){
+            Person.call(this,username,age);
+            this.sex = sex;
+        }
+
+        var student = new Student("zhangsan",20,"male");
+        console.log(student);
+    </script>
+
+    
+    <script>
+        //swim.call(对象，参数，参数)
+        function swim(m,n){
+            console.log(this.name,m,n);
+        }
+        var bird = {
+            name:"polly",
+            fly:function(m,n){
+                console.log(this.name,m,n);
+            }
+        };
+        var me = {
+            name:"ABC"
+        };
+        swim.call(me,"hello","world");
+        //apply
+        //swim.apply(bird,)
+
+
+        //bind 切换函数的this指向，但是不会立刻执行，而是会生成一个新的函数
+
+        var swim1 = swim.bind(bird,);
+        swim();
+
+
+        var obj = {
+        "objName":"obj1",
+        "show":function(){
+            function fn1(){
+                    console.log(this.objName);
+                }
+                fn1();
+            }
+        }
+        obj.show();
+
+
+
+    </script>
+</body>
+</html>
