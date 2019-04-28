@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {x:1};
+    Object.defineProperty(obj,"y",{
+        writable:true,
+        enumerable:true,
+        configurable:true,
+        value:2
+    });
+</script>
+<script>
+    var obj = {x:5};
+    Object.defineProperty(obj,"y",{
+        writable:false,
+        enumerable:true,
+        configurable:false,
+        value:6
+    });
+    Object.getOwnPropertyDescriptor(obj,"x");//获取属性特性描述符
+    Object.getOwnPropertyDescriptor(obj,"y");
+</script>
+<script>
+    var obj = {_z:1};
+    /*定义多个属性*/
+    Object.defineProperties(obj,{
+        y:{ value:2,writable:true,enumerable:true},
+        x:{ value:2,writable:true,enumerable:true},
+        z:{
+            get(){
+                return this._z;
+            },
+            set(val){
+                this._z = val;
+            }
+        }
+    });
+</script>
+<script>
+    var o1 ={x:1};
+    var o2 = Object.create(o1);
+    console.log(o2.__proto__ == o1);//true
+    console.log(o2.x);//1
+    //往o2自身上添加属性x
+    o2.x = 2
+    console.log(o2.x);//2
+    //delete 只能删除自身所具备的属性
+    delete o2.x;
+    console.log(o2.x);//1
+    o2.__proto__.x = 3;
+    console.log(o1.x);//3
+    console.log(o2.x);//3
+
+</script>
+</html>

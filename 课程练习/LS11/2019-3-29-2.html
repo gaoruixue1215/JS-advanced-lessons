@@ -56,7 +56,7 @@
         var show = d.getElementsByClassName("show")[0];
         for(var i = 0;i<spanlist.length;i++){
             (function(j){
-                spanlist[j].onclick = function(){
+                spanlist[j].onmouseover = function(){
                 show.innerText = "导航"+j+"内容";
             }
             })(i)

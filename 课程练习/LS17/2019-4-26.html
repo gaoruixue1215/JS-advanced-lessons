@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var superObj = {
+        x:1,
+        y:2
+    };
+    var subObj_First = Object.create(superObj);
+    var subObj_Second = Object.create(superObj);
+    subObj_First.__proto__.x = 5;
+    console.log(subObj_Second.x);//5
+
+
+    function Person(name){
+        this.name = name;
+    };
+    Person.prototype.age = 22;//原型共享，所有人都22
+    Person.prototype.showName = function(){
+        console.log(this.name);
+    };
+    function Student(id){
+        this.id = id;
+    }
+    var person = new Person("Mike");
+    //student.prototype   student实例化出来的对象都可以使用
+    Student.prototype = person;//student 继承 Person 的属性，缺点name固定
+    var s1 = new Student(20170001);
+    var s2 = new Student(20170002);
+    console.log(s1.name,s1.age,s1.id);//Mike 22 20170001
+    console.log(s2.name,s2.age,s2.id);//Mike 22 20170002
+    /*
+    s1.name
+    s1.__proto__ == Stident.prototype
+    Stident.prototype==person
+    person.__proto__ == Person.prototype
+    s1.__proto__.__proto__ == Person.prototype
+    */
+    s1.__proto__.name = "Jack";
+    console.log(s2.name);//Jack
+    s2.__proto__.__proto__.age = 99;
+    console.log(s2.age);//99
+
+</script>
+<script>
+    /*模拟类-类继承的形式 一 */
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    };
+    Person.prototype.showName = function(){
+        console.log(this.name);
+    };
+    //call() 方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。
+    function Student(name,age,id){
+        Person.call(this,name,age);//继承Person 的属性 ；this 切换前面的调用主体（Person）
+        this.id = id;
+    }
+    Student.prototype.__proto__ = Person.prototype;
+    var s1 = new Student("xxx",22,2017001);
+    var s2 = new Student("www",23,2017002);
+    console.log(s1);//不会再共用
+    s1.showName();//xxx
+
+</script>
+<script>
+    function Animal(name,weight){
+        this.name = name;
+        this.weight = weight;
+    }
+    Animal.prototype.run = function(){
+        console.log(this.name + "can run");
+    }
+    function Bird(name,weight,color,height){
+        Animal.call(this,name,weight);
+        this.color = color;
+        this.height = height;
+    }
+    Bird.prototype.__proto__ = Animal.prototype;
+    var b1 = new Bird("zhangsan",20,"red","10cm");
+    console.log(b1);
+</script>
+<script>
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    };
+    Person.prototype.showName = function(){
+        console.log(this.name);
+    };
+    //call() 方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。
+    function Student(name,age,id){
+        Person.call(this,name,age);//继承Person 的属性 ；this 切换前面的调用主体（Person）
+        this.id = id;
+    }
+    console.log(Student.prototype);//覆盖前   {constructor: ƒ}
+    Student.prototype = Object.create(Person.prototype);//创建原型链.覆盖
+    console.log(Student.prototype);//覆盖后   Person {}
+    Student.prototype.constructor = Student;// constructor 是一种用于创建和初始化class创建的对象的特殊方法
+    var s1 = new Student("xxx",22,2017001);
+    var s2 = new Student("www",23,2017002);
+    console.log(s1);//Student {name: "xxx", age: 22, id: 2017001}
+    s1.showName();//xxx
+</script>
+
+</html>

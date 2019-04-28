@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var x = 1;
+    var y = 2;
+    //alert(window.x);
+    /*
+    this 取决于所在函数的调用主体
+    */
+    function thisTest(){
+        console.log(this);//window
+    }
+    thisTest();
+</script>
+<script>
+    //通过this值判断是否在严格模式
+    function thisTest(){
+        "use strict";
+        console.log(this);//undefined
+        return this === undefined?true:false;
+    }
+    thisTest();
+</script>
+<script>
+    var point = {
+        x:0,
+        y:0,
+        moveTo:function(x,y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    /*
+    函数或者方法的内部的this指向，取决于该函数的调用主体
+    */
+    point.moveTo(10,10);
+</script>
+<script>
+    function Point(x,y){
+        this.x = x;
+        this.y = y;
+        this.moveTo = function(x,y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    var p = new Point(10,10);
+    /*函数内部的this指向取决于函数调用的主体是谁*/
+    p.moveTo(5,5);
+</script>
+<script>
+    var objA = {name: "AA",x:1};
+    var objA = {name: "BB",x:2};
+    function test(){
+        console.log(this.name,this,x);
+    }
+    objA.fun = test;
+</script>
+<script>
+    var objA = {name:"AA",x:1};
+    var objB = {name:"BB",x:2};
+    function test(){
+        console.log(this.name,this.x);
+    }
+    objA.fun = test;
+    objA.fun();
+    //函数也是对象，函数对象，函数对象的构造函数就是Function
+    //函数对象.__proto__ == Function.prototype;
+    //方法.call(函数调用主体对象，arg1，arg2)
+    objA.fun.call(objB);
+
+</script>
+<script>
+    
+</script>
+</html>
