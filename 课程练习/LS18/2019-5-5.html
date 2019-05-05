@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //forEach() 方法对数组的每个元素执行一次提供的函数。
+    //value 数组中正在处理的当前元素
+    //index可选 数组中正在处理的当前元素的索引。
+    //array可选 forEach() 方法正在操作的数组。
+
+    /*
+    arr.forEach(callback,thisArg);
+    callback是针对数组的每个数组元素所应用的回调函数
+    value 表示数组的元素的元素值
+    index 表示数组元素的索引值
+    arr 表示被操作的数组
+    thisArg回调函数内部的this指向
+    */
+    var arr1 = ['a','b','c'];
+    var obj1 = {x:"d"};
+    arr1.forEach(function(value,index,arr){
+        console.log(value,index,arr);
+        this[value] = value;//this[value] 变量名 this.value属性值
+    },obj1);
+    console.log(obj1);
+</script>
+<script>
+    /*
+        var result = arr.every(callback)
+        测试数组的数组元素执行回调函数的结果，如果有返回值为false，则result为false，如果均为true则为true
+    */
+    var arr1 = [10,20,30,40];
+    var result = arr1.every(function(value){
+        return value > 20;
+    });
+    console.log(result);//false 都是true才是true，有false就是false
+
+
+    /*
+        some（）只要某些数组元素满足条件，返回值为true
+        如果全部不满足，返回值为false
+    */
+    var result1 = arr1.some(function(value){
+        return value > 30;
+    })
+    console.log(result1);//true
+
+    var result2 = arr1.some(function(value){
+        return value > 40;
+    })
+    console.log(result2);//false
+
+    //map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+    var result3 = arr1.map(function(value){
+        return value*2;
+    })
+    console.log(result3);//(4) [20, 40, 60, 80]
+
+    //filter() 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。、
+    //生成新的数组，并且数组元素满足特定条件
+    var result4 = arr1.filter(function(value){
+        return value < 20;
+    })
+    console.log(result4);//[10] 大于20的都被过滤掉了
+</script>
+<script src="../2019-5-5.js"></script>
+<script>
+    var arr2 = ["  abcd"," kkf dfd "];
+    arr2.filtersapce();//扩展方法
+</script>
+</html>
