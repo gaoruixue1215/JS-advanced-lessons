@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>用户名：</td>
+            <td>
+                <input type="text" name="username" id="username">
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" name="pwd" id="pwd">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="登录">
+            </td>
+        </tr>
+
+    </table>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    /*非空验证1*/
+    /*
+        生成一个jQuery包装集$(html标记) $(js对象)
+        获取表单元素的value值 $(元素).val()
+        $(选择器).append(jquery包装集)向前面选中元素内部最后位置添加新节点
+        $(选择器).remove()将选中元素移除掉
+    */
+    $("#username").blur(function(){
+        var $error = $("<spam class = 'error'>用户名不能为空</span>");
+        var inputVal = $(this).val();//获取value值
+        if(inputVal == ""){
+            $(this).parent().append($error);/*append 在后面添加（）*/
+        }
+        else{
+            $(".error").remove();
+        }
+    })
+    $("#pwd").blur(function(){
+        var $err = $("<spam class = 'err'>密码不能为空</span>");
+        var val = $(this).val();
+        if(val == ""){
+            $(this).parent().append($err);
+        }
+        else{
+            $(".err").remove();
+        }
+    })
+
+</script>
+</html>

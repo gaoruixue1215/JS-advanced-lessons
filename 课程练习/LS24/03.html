@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            background: yellow;
+            width:100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+    <div>层1</div>
+    <div>层2</div>
+    <div>层3</div>
+    <div>层4</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    /*鼠标移上时，背景色为蓝色
+      移开时变回灰色
+      点击时变为红色*/
+
+    /*合着写*/
+    $("div").mouseover(function(){
+        $(this).css("background","blue");
+    }).mouseout(function(){
+        $(this).css("background","gray");
+    }).click(function(){
+        $(this).css("background","red");
+    })
+
+    //分开写
+    // $("div").mouseout(function(){
+    //     $(this).css("background","gray");
+    // })
+    // $("div").click(function(){
+    //     $(this).css("background","red");
+    // })
+</script>
+</html>

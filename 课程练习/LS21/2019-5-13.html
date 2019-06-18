@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="jquery-3.4.1.js"></script>
+<script src = "https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    /*
+        Math.random();
+        得到的是一个[0,1)之间的浮点数
+    */
+    for(var i= 0;i<5;i++){
+        console.log(Math.random());
+    }
+    /*得到max和min之间的随机数*/
+    function getMiddle(min,max){
+        return Math.random()*(max-min)+min;
+    }
+</script>
+<script>
+    /*
+        1、前后端的数据交互传输数据格式
+        2、作为数据存储的数据格式
+    */
+    var jsObject = {
+        "username":"zhangsan",
+        "age":20,
+        "address":{
+            "addName":"石家庄",
+            "addCode":"111222"
+        }
+    };
+    var jsonStr = JSON.stringify(jsObject);
+    var jsonStr = JSON.stringify(jsObject,function(k,v){
+        if(typeof v == "number"){
+            return v*2;
+        }
+        return v;
+    })
+    console.log(jsonStr);
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        用小括号包裹的规则内容，称之为分组
+    */
+    var reg1 = /(ss\d)a(\dxx)/gi;
+    var str1 = "ss1a2xxbcdefg";
+    reg1.exec(str1);//["ss1a", "ss1"]
+
+    /*
+        reg.exec(str)
+        如果可以匹配的，返回数组
+        如果不能匹配，返回null
+         返回的数组结构
+         [整个正则匹配到的内容，分组匹配到的内容]
+    */
+</script>
+<script>
+    var reg1 = /(\dss)a\1/gi;
+    var reg2 = /(\dss)a(\dss)/gi;
+    var str1 = "1ssa1ssfdfdfdf";
+    str1.replace(reg1,"x");//"xfdfdfdf"
+
+    var reg3 = /(ab){3}/gi;
+    var str3 = "abababcdef";
+    str3.replace(reg3,"x");//"xcdef"
+
+</script>
+<script>
+   /*
+    String.prototype
+       var result=str.replace(正则表达式，替换成的内容)；
+       返回值result是被替换的字符串
+
+       var result=str.match(正则表达式)
+       返回值result，如果匹配成功返回一个数组，匹配失败返回null
+
+       var result = str.search(正则表达式)
+       返回的是匹配位置的起始索引值
+
+
+    RegExp.prototype
+        reg.test(str)验证字符串是否符合正则表达式规则，返回符合true，不符合返回false
+        reg.exec(str)匹配返回数组，不匹配返回null
+        [整个正则匹配到的内容，分组匹配到的内容,index]
+
+    */
+
+    var reg = /\d(aa)\s/gi;
+    var str= "1aa hello";
+    str.match(reg);
+
+</script>
+<script>
+    /(.*)\.(rar|zip|7zip|tgz)$/
+    /*
+        (.*) .任意的一个字符*表示前面的字符出现0次或多次
+        表示文件名字符出现0次或多次
+        （.+）
+        \.时，做转义处理，匹配
+        (rar|zip|7zip|tgz)任意取其中一个
+
+        $以前面的分组内容结尾
+        
+    */
+
+    var reg2 = /^#[a-fA-F0-9]{6}$/;
+    /*
+        ^#表示必须以#开头
+        [a-fA-F0-9]从[]集合中取任意一个字符 a-fA-F0-9
+        {6}
+    */
+</script>
+</html>

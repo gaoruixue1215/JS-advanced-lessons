@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var username = "lily";
+
+    var person = {
+        username,
+        show(){
+            console.log(this.username);
+        }
+    }
+    person.show();
+
+
+
+    /*
+        如果属性命名希望是个变量
+        [变量名]
+    */
+
+    let bar = "foo";
+    let obj = {
+        [bar]:"obj1"
+    }
+    console.log(obj);
+
+
+    /*
+        Object.is(value1,value2)
+        判断value1，value2是否相等
+        Object.assign()
+    */
+    let target = {"username":"zhangsan"};
+    let source1 = {"age":20};
+    let source2 = {"sex":"male"};
+    console.log(Object.assign(target,source1,source2));
+
+
+    let obj1={"username":"zhangsan","age":20};
+    let values = Object.values(obj1);
+    for(let i of values){
+        console.log(i);
+    }
+
+      /*
+        存在函数嵌套，this指向不正确时的解决方案
+        1、通过that转存
+        2、bind硬绑定
+        3、apply call
+        4、箭头函数
+    */
+    var obj = {
+        objName:"obj1",
+        showName:function(){
+            // setTimeout(function(){
+            //     console.log(this.objName);//this可以穿透，指向window
+            // },3000);
+
+            // //解决穿透的方法
+            // var that = this;
+            // setTimeout(function(){
+            //     console.log(that.objName);
+            // },3000);
+            
+            // setTimeout(function(){
+            //     console.log(this.objName);
+            // },bind(this),3000);
+
+            //ES6中解决穿透的方法
+            setTimeout(()=>{
+                console.log(this);
+                console.log(this.objName);
+            },3000);
+        }
+    }
+    obj.showName();
+
+</script>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<!-- <script>
+    /*
+        使用SYmbol方法生成一个Symbol的变量并且具有唯一性
+        不可转化为其它数据类型
+    */
+    let s1 = Symbol("s1");
+    let s2 = Symbol("s1");//s1 s2不同
+    console.log(s1===s2);//只要生成了就是唯一的
+
+</script> -->
+<script>
+    let s1 = Symbol("s1");
+    let obj = {};
+    obj[s1]="hello";
+    //永远不会在有一个属性与他重复
+    let obj1 = {
+        [s1]:"world" //记得加中括号
+    }
+
+    let obj2={};
+    let s2 = Symbol("s2");
+    Object.defineProperty(obj2,s2,{
+        value:2
+    });
+
+    Object.getOwnPropertySymbols(obj2);
+
+    console.log(Symbol.for("f1")==Symbol.for("f1"));//true
+
+    let f1 = Symbol("f1");
+    console.log(Symbol.for("f1")==f1);//false
+    console.log(Symbol.for("f1")==Symbol.for("f1"));//true
+
+
+    let s3=new Set([1,2,3,4,5,6,1,2,3]);
+    console.log(s3);//去除了重复元素
+    for(let i of s3){
+        console.log(i);
+    }
+    
+    console.log(s3.size);
+    s3.add(1);
+    s3.delete("hello");
+    s3.has(5);
+    console.log(s3.keys());
+    console.log(s3.values());
+    for(let ji of s3.values()){
+        console.log(j);
+    }
+    console.log(s3);
+
+    let m1= new Map();
+    let o = {"x":1};
+    m1.set(o,2);
+    console.log(m1);
+    for(let i of m1){
+        console.log(i);
+    }
+    m1.get(o);
+    m1.has(o);
+    m1.delete(o);
+
+
+    let m2 = new Map([
+        ["username","zhangsan"],
+        ["age",20]
+    ]);
+    for(let i of m2){
+        console.log(i);
+    }
+</script>
+</html>
