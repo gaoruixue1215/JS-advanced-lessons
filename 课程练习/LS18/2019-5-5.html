@@ -47,6 +47,7 @@
         some（）只要某些数组元素满足条件，返回值为true
         如果全部不满足，返回值为false
     */
+    var arr1 = [10,20,30,40];
     var result1 = arr1.some(function(value){
         return value > 30;
     })
@@ -58,6 +59,7 @@
     console.log(result2);//false
 
     //map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+    var arr1 = [10,20,30,40];
     var result3 = arr1.map(function(value){
         return value*2;
     })
@@ -65,6 +67,7 @@
 
     //filter() 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。、
     //生成新的数组，并且数组元素满足特定条件
+    var arr1 = [10,20,30,40];
     var result4 = arr1.filter(function(value){
         return value < 20;
     })
