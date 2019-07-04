@@ -19,7 +19,7 @@
     }
     //Object.create();创建一个新对象，并且将Obj对象作为新对象的__.proto.__
     var subObj = Object.create(obj);
-    console.log(subObj.__proto__ == obj);
+    console.log(subObj.__proto__ == obj);//true
     console.log(subObj.num);//先找自身，如果没有的话。就去原型链上找，先找subObj,再找obj,一级级找
     //subObj.age = 23;
     //console.log(subObject);
@@ -40,6 +40,7 @@
     console.log(person1.__proto__ == Person.prototype);//true
     person1.sayHi();
     person2.sayHi();
+    console.log(Person.prototype);
 </script>
 <script>
     var obj = {x:1};
